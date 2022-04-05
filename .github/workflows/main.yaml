@@ -8,7 +8,7 @@ jobs:
         github-token: ${{ secrets.ACTIONS_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
-            owner: 'commit.data.commit.author.name',
+            owner: 'mpwsh',
             repo: 'remote-repo-test',
             workflow_id: 'main.yml',
             ref: 'main'
