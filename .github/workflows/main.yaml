@@ -5,7 +5,7 @@ jobs:
     steps:
     - uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_ACTIONS }}
+        github-token: ${{ secrets.ACTIONS_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
             owner: 'commit.data.commit.author.name',
