@@ -10,6 +10,6 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 'mpwsh',
             repo: 'remote-repo-test',
-            workflow_id: 'main.yml',
+            workflow_id: 'CI',
             ref: 'main'
           })
