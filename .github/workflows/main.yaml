@@ -11,5 +11,5 @@ jobs:
             owner: 'mpwsh',
             repo: 'remote-repo-test',
             workflow_id: 'main.yaml',
-            ref: 'main'
+            ref: 'dev'
           })
