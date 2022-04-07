@@ -3,6 +3,7 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
+    - name: Triggering deployment update in remote repository
     - uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.ACTIONS_TOKEN }}
@@ -10,6 +11,6 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 'mpwsh',
             repo: 'remote-repo-test',
-            workflow_id: 'main.yaml',
-            ref: 'dev'
+            workflow_id: '${GITHUB_REF##*/}.yaml',
+            ref: '${GITHUB_REF##*/}'
           })
