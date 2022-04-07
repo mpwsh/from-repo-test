@@ -6,7 +6,7 @@ jobs:
     - name: Triggering deployment update in remote repository
       uses: actions/github-script@v6
       env:
-        BRANCH: ${{ github.event.pull_request.head.ref }}
+        BRANCH: ${{ github.ref_name }}
       with:
         github-token: ${{ secrets.ACTIONS_TOKEN }}
         script: |
