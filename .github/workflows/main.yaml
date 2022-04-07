@@ -8,7 +8,7 @@ jobs:
       with:
         github-token: ${{ secrets.ACTIONS_TOKEN }}
         env:
-          BRANCH: ${{GITHUB_REF##*/}}
+          BRANCH: ${GITHUB_REF##*/}
         script: |
           await github.rest.actions.createWorkflowDispatch({
             owner: 'mpwsh',
