@@ -5,12 +5,14 @@ jobs:
     steps:
     - name: Triggering deployment update in remote repository
       uses: actions/github-script@v6
+        BRANCH: ${GITHUB_REF##*/}
       with:
         github-token: ${{ secrets.ACTIONS_TOKEN }}
         script: |
+          console.log(process.env.BRANCH);
           await github.rest.actions.createWorkflowDispatch({
             owner: 'mpwsh',
             repo: 'remote-repo-test',
-            workflow_id: process.env.GITHUB_HEAD_REF + '.yaml',
-            ref: process.env.BRANCH
+            workflow_id: ${process.env.GITHUB_HEAD_REF} + '.yaml',
+            ref: ${process.env.GITHUB_HEAD_REF}
           })
