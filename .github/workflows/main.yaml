@@ -3,16 +3,17 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Triggering deployment update in remote repository
       uses: actions/github-script@v6
+      env:
+        BRANCH: ${{ github.event.pull_request.head.ref }}
       with:
         github-token: ${{ secrets.ACTIONS_TOKEN }}
         script: |
-          console.log(process.env.GITHUB_HEAD_REF);
+          console.log('branch is', process.env.BRANCH);
           await github.rest.actions.createWorkflowDispatch({
             owner: 'mpwsh',
             repo: 'remote-repo-test',
-            workflow_id: process.env.GITHUB_HEAD_REF + '.yaml',
-            ref: process.env.GITHUB_HEAD_REF
+            workflow_id: process.env.BRANCH + '.yaml',
+            ref: process.env.BRANCH
           })
